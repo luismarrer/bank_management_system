@@ -34,8 +34,11 @@ cd client
 npm install
 ```
 ### backend
+It is recommended to use a virtual python environment.
 ```bash
 cd backend
+python -m venv venv
+source venv/bin/activate
 pip install -r ../requirements.txt
 ```
 3. Configure your database connection:
@@ -49,7 +52,11 @@ DB_PASSWORD=your_database_password
 DB_HOST=localhost
 DB_PORT=5432
 ```
-4. Run the application:
+4. Apply database migrations:
+```bash
+python manage.py migrate # This is necessary to create the tables in the database.
+```
+5. Run the application:
 ### client
 ```bash
 npm run dev
@@ -62,4 +69,4 @@ python manage.py runserver
 ## Usage
 1. Open your browser and go to http://localhost:5173/ or the link provided in your terminal.
 2. Register an account.
-3. Request, view, update or delete an Credit Card, Debit Card or Loan.
+3. Request(create), view, update or delete a Credit Card, Debit Card or Loan.
