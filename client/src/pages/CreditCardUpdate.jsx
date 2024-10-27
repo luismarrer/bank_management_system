@@ -38,23 +38,25 @@ export function CreditCardUpdate() {
 
 	return (
 		<div>
-			<h3>Update your Credit Card</h3>
+			<h5>Update your Credit Card</h5>
 			<div>
 				<label>Card Name</label>
 				<input
 					type="text"
 					placeholder={data.name}
+					value={data.name}
 					name="name"
 					onChange={handleChange}
 					className="form-control"
 				/>
 			</div>
 			<div>
-				<p>{data.holder_name}</p>
-				<p>{data.expiration_date}</p>
-				<p>{data.number}</p>
-				<p>{data.current_balance}</p>
-				<p>{data.credit_limit}</p>
+				<br></br>
+				<p>Card Number: {data.number}</p>
+				<p>Expiration Date: {data.expiration_date}</p>
+				<p>Cardholder Name: {data.holder_name}</p>
+				<p>Current Balance: {data.current_balance}</p>
+				<p>Available Credit: {data.credit_limit}</p>
 			</div>
 			<button className='btn btn-danger mt-3' onClick={async () =>
 				{

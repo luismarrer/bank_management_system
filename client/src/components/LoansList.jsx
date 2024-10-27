@@ -1,9 +1,12 @@
 import {useEffect, useState} from "react";
 import {getAllLoans} from "../api/Loan_api";
 import {ShowLoan} from "./Loan";
+import { Table } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export function LoansList() {
 	const [loans, setCards] = useState([]);
+	const navigate = useNavigate();
 
 	useEffect(() =>
 		{
@@ -16,10 +19,16 @@ export function LoansList() {
 		}, []);
 	return (
 		<div>
-			<h4>Loans</h4>
-			{loans.map((loan) => (
-				<ShowLoan key={loan.id} loan={loan} />
-			))}
+			<h6 onClick={() => navigate('/loans')}>Loans</h6>
+			<Table striped>
+				<tbody>
+					{loans.map((loan) => (
+						<tr key={loan.id}>
+							<ShowLoan key={loan.id} loan={loan} />
+						</tr>
+					))}
+				</tbody>
+			</Table>
 		</div>
 	);
 }

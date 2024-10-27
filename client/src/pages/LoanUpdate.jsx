@@ -38,22 +38,24 @@ export function LoanUpdate() {
 
 	return (
 		<div>
-			<h3>Update your Loan</h3>
+			<h5>Update your Loan</h5>
 			<div>
 				<label>Loan Name</label>
 				<input
 					type="text"
 					placeholder={data.name}
+					value={data.name}
 					name="name"
 					onChange={handleChange}
 					className="form-control"
 				/>
 			</div>
 			<div>
-				<p>{data.type}</p>
-				<p>{data.amount}</p>
-				<p>{data.end_date}</p>
-				<p>{data.interes_rate}</p>
+				<br></br>
+				<p>Type: {data.loan_type}</p>
+				<p>Amount: {data.amount}</p>
+				<p>Date to pay: {data.end_date}</p>
+				<p>Interest Rate: %{data.interest_rate}</p>
 			</div>
 			<button className='btn btn-danger mt-3' onClick={async () =>
 				{

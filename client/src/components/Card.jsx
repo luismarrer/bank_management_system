@@ -4,21 +4,11 @@ export function ShowDebitCard({ card })
 {
 	const navigate = useNavigate();
 	return (
-		<div className='' onClick=
-			{() => 
-				{
-					navigate(`/debitcards/${card.id}`);
-				}
-			}
-		>
-			<p>{card.name}</p>
-			<p>{card.holder_name}</p>
-			<p>{card.number}</p>
-			<p>{card.expiration_date}</p>
-			<p>{card.account_balance}</p>
-
-		</div>
-		
+		<>
+			<td className='text-start' onClick={() => navigate(`/debitcards/${card.id}`)}>{card.name}</td>
+			<td className='text-center' onClick={() => navigate(`/debitcards/${card.id}`)}>x{card.number.slice(-4)}</td>
+			<td className='text-end' onClick={() => navigate(`/debitcards/${card.id}`)}>${card.account_balance}</td>
+		</>
 	);
 }
 
@@ -26,20 +16,10 @@ export function ShowCreditCard({ card })
 {
 	const navigate = useNavigate();
 	return (
-		<div className='' onClick=
-			{() => 
-				{
-					navigate(`/creditcards/${card.id}`);
-				}
-			}
-		>
-			<p>{card.name}</p>
-			<p>{card.holder_name}</p>
-			<p>{card.number}</p>
-			<p>{card.expiration_date}</p>
-			<p>{card.current_balance}</p>
-			<p>{card.credit_limit}</p>
-		</div>
-		
+		<>
+			<td className='text-start' onClick={() => navigate(`/creditcards/${card.id}`)}>{card.name}</td>
+			<td className='text-center' onClick={() => navigate(`/creditcards/${card.id}`)}>x{card.number.slice(-4)}</td>
+			<td className='text-end' onClick={() => navigate(`/creditcards/${card.id}`)}>${card.current_balance}/${card.credit_limit}</td>
+		</>
 	);
 }

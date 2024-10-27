@@ -12,6 +12,7 @@ import {LoansPage} from './pages/LoansPage'
 import { LoanUpdate } from './pages/LoanUpdate';
 import {Register} from './pages/Register';
 import { Login } from './pages/Login';
+import './App.css'
 
 function App() {
 	const navigate = useNavigate();
@@ -24,7 +25,7 @@ function App() {
 		  }
 		}, [navigate]);
 	return (
-			<div className="d-flex bg-dark text-light justify-content-center  align-items-center">
+			<div>
 				<Navigation />
 				<Routes>
 					<Route path="/" element={<Dashboard />} />

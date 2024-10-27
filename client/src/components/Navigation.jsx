@@ -5,8 +5,8 @@ export function Navigation()
 {
 	const token = localStorage.getItem('token');
   return (
-      <Navbar bg="dark" variant="dark" className="flex-column">
-        <Nav className="flex-column">
+      <Navbar>
+        <Nav>
           <Nav.Link href="/">Home</Nav.Link>
           <Nav.Link href="/debitcards">Debit Cards</Nav.Link>
           <Nav.Link href="/creditcards">Credit Cards</Nav.Link>

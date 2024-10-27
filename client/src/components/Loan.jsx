@@ -4,20 +4,11 @@ export function ShowLoan({ loan })
 {
 	const navigate = useNavigate();
 	return (
-		<div className='' onClick=
-			{() => 
-				{
-					navigate(`/loans/${loan.id}`);
-				}
-			}
-		>
-			<p>{loan.name}</p>
-			<p>{loan.type}</p>
-			<p>{loan.amount}</p>
-			<p>{loan.end_date}</p>
-			<p>{loan.interes_rate}</p>
-
-		</div>
+		<>
+			<td className='text-start' onClick={() => navigate(`/loans/${loan.id}`)}>{loan.name}</td>
+			<td className='text-center' onClick={() => navigate(`/loans/${loan.id}`)}>{loan.end_date}</td>
+			<td className='text-end' onClick={() => navigate(`/loans/${loan.id}`)}>${loan.amount}</td>
+		</>
 		
 	);
 }
