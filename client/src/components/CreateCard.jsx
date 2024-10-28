@@ -27,7 +27,7 @@ export function RequestDebitCard() {
 
   return (
     <div>
-      <h3>Request your Debit Card</h3>
+      <h5>Request your Debit Card</h5>
       <div>
         <label>Card Name</label>
         <input
@@ -84,7 +84,7 @@ export function RequestCreditCard() {
   
 	return (
 	  <div>
-		<h3>Request your Credit Card</h3>
+		<h5>Request your Credit Card</h5>
 		<div>
 		  <label>Card Name</label>
 		  <input

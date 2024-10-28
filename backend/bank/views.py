@@ -1,6 +1,9 @@
+from openai import OpenAI
+from django.conf import settings
 from rest_framework import status
-from rest_framework.authentication import TokenAuthentication
 from rest_framework import viewsets, permissions
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from .models import CreditCard, DebitCard, Loan
 from .serializers import CreditCardSerializer, DebitCardSerializer, LoanSerializer
@@ -178,3 +181,47 @@ class LoanViewSet(viewsets.ModelViewSet):
 
         self.perform_destroy(instance)
         return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+# AI feature
+client = OpenAI(api_key=settings.OPENAI_API_KEY)
+
+
+@api_view(['POST'])
+def predict_loan_approval(request):
+    if request.method != 'POST':
+        return Response({'detail': 'Method not allowed'}, status=status.HTTP_405_METHOD_NOT_ALLOWED)
+
+    data = request.data
+    age = data.get("age")
+    income = data.get("income")
+    employment_type = data.get("employment_type")
+    loan_amount = data.get("loan_amount")
+    loan_duration = data.get("loan_duration")
+
+    prompt = f"""
+    Based on the following client information, predict if a loan should be approved or not:
+    - Age: {age}
+    - Income: {income}
+    - Employment type: {employment_type}
+    - Loan amount: {loan_amount}
+    - Loan duration (in months): {loan_duration}
+
+    Respond only with 'approved' or 'not approved' based on the likelihood of loan approval.
+    """
+
+    try:
+        chat_completion = client.chat.completions.create(
+            model="gpt-4o-mini",
+            messages=[
+                {
+                    "role": "user",
+                    "content": prompt
+                }
+            ],
+        )
+        result = chat_completion.choices[0].message.content
+        return Response({'approval_status': "According to the information provided, your loan will be: " + result}, status=status.HTTP_200_OK)
+
+    except Exception as e:
+        return Response({'detail': f"Prediction error: {str(e)}"}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)

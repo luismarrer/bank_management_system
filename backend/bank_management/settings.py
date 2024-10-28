@@ -17,6 +17,7 @@ from environs import Env
 # Load environment variables
 env = Env()
 env.read_env()
+OPENAI_API_KEY = env.str('OPENAI_API_KEY')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent

@@ -10,6 +10,7 @@ import {CreditCardsPage} from './pages/CreditCardsPage';
 import {CreditCardUpdate} from './pages/CreditCardUpdate';
 import {LoansPage} from './pages/LoansPage'
 import { LoanUpdate } from './pages/LoanUpdate';
+import {AILoan} from './pages/AILoan';
 import {Register} from './pages/Register';
 import { Login } from './pages/Login';
 import './App.css'
@@ -36,6 +37,7 @@ function App() {
 					<Route path="/creditcards" element={<CreditCardsPage />} />
 					<Route path='/creditcards/:id' element={<CreditCardUpdate />} />
 					<Route path="/loans" element={<LoansPage />} />
+					<Route path="/ailoan" element={<AILoan />} />
 					<Route path='/loans/:id' element={<LoanUpdate/>} />
 					{!localStorage.getItem('token') && <Route path="*" element={<Navigate to="/register" />} />}
 				</Routes>

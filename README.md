@@ -9,6 +9,7 @@ A small web application to implement **CRUD** operations for three financial mod
 - Frontend with JavaScript framework: **React**
 - Backend API with CRUD endpoints using **Django** and **Django REST Framework**
 - Database: **PostgreSQL**
+- Loan approval predictions using the OpenAI API.
 
 ## Requirements
 

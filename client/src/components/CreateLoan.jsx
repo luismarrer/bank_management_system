@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { createLoan } from "../api/Loan_api";
 
 export function RequestLoan() {
+	const navigate = useNavigate();
 	const [success, setSuccess] = useState(false);
 	const [error, setError] = useState('');
 	const [data, setData] = useState({
@@ -28,7 +30,7 @@ export function RequestLoan() {
   
 	return (
 	  <div>
-		<h3>Request your Loan</h3>
+		<h5>Request your Loan</h5>
 		<div>
 		  <label>Loan Name</label>
 		  <input
@@ -76,6 +78,9 @@ export function RequestLoan() {
 			className="form-control"
 		  />
 		</div>
+		<button onClick={() => navigate("/ailoan")} className="btn btn-secondary mt-3 mx-3">
+			Loan Eligibility
+		</button>
 		<button onClick={handleClick} className="btn btn-primary mt-3">
 		  Request your Loan
 		</button>
