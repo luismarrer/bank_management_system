@@ -42,7 +42,7 @@ python -m venv venv
 source venv/bin/activate
 pip install -r ../requirements.txt
 ```
-3. Configure your database connection:
+3. Configure your database connection and your key for OpenAPI:
 - Make sure you have PostgreSQL installed. ([Official documentation for download and installation](https://www.postgresql.org/download/).)
 - Create a PostgreSQL database.
 - In the backend directory, create a .env file with the following structure:
@@ -52,6 +52,8 @@ DB_USER=your_database_user
 DB_PASSWORD=your_database_password
 DB_HOST=localhost
 DB_PORT=5432
+
+OPENAI_API_KEY=your_openai_key
 ```
 4. Apply database migrations:
 ```bash
